@@ -1,9 +1,0 @@
-numpy
-pandas
-streamlit
-matplotlib.pyplot
-seaborn
-mlxtend
-DateTime
-mlxtend
-openpyxl 
