@@ -1,7 +1,7 @@
 numpy
 pandas
 streamlit
-matplotlib
+matplotlib.pyplot
 seaborn
 mlxtend
 DateTime
