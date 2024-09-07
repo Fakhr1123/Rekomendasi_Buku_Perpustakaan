@@ -2,7 +2,7 @@ numpy
 pandas
 streamlit
 streamlit_option_menu
-streamlit.components.v1
+streamlit==1.25.0
 matplotlib
 seaborn
 mlxtend
