@@ -9,6 +9,7 @@ from datetime import datetime
 from PIL import Image
 from mlxtend.preprocessing import TransactionEncoder
 import warnings
+import streamlit.components.v1 as components
 warnings.filterwarnings("ignore")
 
 st.image("logo_unp.png")
@@ -20,14 +21,38 @@ st.write("""
 
 # Define the sidebar or top menu
 selected = option_menu(
-    menu_title="Home",
-    options=["Eksplorasi Data", "Cari Rekomendasi", "Rekomendasi Berdasarkan Fakultas"],
+    menu_title="Menu",
+    options=["Home", "Eksplorasi Data",  "Cari Rekomendasi", "Rekomendasi Berdasarkan Fakultas"],
     menu_icon="columns-gap",
-    icons=["bar-chart-line-fill", "card-checklist", "collection-fill"],
+    icons=["house-fill","bar-chart-line-fill", "card-checklist", "collection-fill"],
     default_index=0,
     orientation="horizontal"
 )
 
+#Option Home
+if selected == "Home":
+    html_content = '''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="#">Home</a>
+            </nav>
+        </header>
+        <section>
+            <h2 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-1">Perpustakaan UNP </h2>
+            <p style="text-align: justify;">
+    Perpustakaan UNP melakkan pengembangan pustakawan diarahkan keberbagai sektor strategis dalam rangka memasuki era informasi global, seperti penataan sistem manajemen perpustakaan, pemantapan basis teknologi informasi, pengembangan sumber daya manusia, pengoptimalan sumber daya finansial, dan kesejahteraan pustakawan. Pada masa ini Perpustakaan UNP mulai mengembangkan Student Service Center (SSC) yang menempati ruangan lantai dasar Perpustakaan UNP. SSC ini nantinya diharapkan mampu melayani berbagai kebutuhan mahasiswa, dosen, dan karyawan.</p>
+    <body>
+    </html>
+    '''
+    components.html(html_content, height=600)
 
 # Load the dataset once to avoid reloading it multiple times
 dataset = pd.read_excel('DATA PENELITIAN4.xlsx')
@@ -109,7 +134,7 @@ if selected == "Rekomendasi Berdasarkan Fakultas":
     rec_gabungan = pd.read_excel('HasilMerge.xlsx')
 
     def User_input_features():
-        Fakultas = st.selectbox("Fakultas", ["FIP", "FBS", "FMIPA", "FIS", "FT", "FIK", "FPP", "FPS", "OTHERS"])
+        Fakultas = st.selectbox("Fakultas", ["FIP", "FBS", "FMIPA", "FIS", "FT", "FIK", "FPP", "FPK", "OTHERS"])
         return Fakultas 
 
     Fakultas = User_input_features()
